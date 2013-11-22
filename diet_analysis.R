@@ -2,9 +2,9 @@
 # for details see Joseph et al. 2011 Freshwater Biology
 
 # load packages (install if not already installed)
-require(lme4) || install.packages(lme4)
-require(ggplot2) || install.packages(ggplot2) 
-require(effects) || install.packages(effects) 
+require(lme4) || install.packages("lme4")
+require(ggplot2) || install.packages("ggplot2") 
+require(effects) || install.packages("effects") 
 
 # load in data
 diet <- read.csv("diet.csv", header=T)
