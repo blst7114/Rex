@@ -47,4 +47,4 @@ plot(effs, rescale.axis=F, rug=F,
      ylim=c(0, 1))
 ```
 
-For more details you can check out the actual paper [here](). 
+For more details you can check out the actual paper [here](http://www.colorado.edu/eeb/gradstudents/joseph/pubs/Joseph_et_al_2011_Rana.pdf). 
