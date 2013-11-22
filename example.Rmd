@@ -1,0 +1,50 @@
+Frog diet analysis
+========================================================
+
+Here is an example R markdown document that integrates text written in markdown with analysis done in R. 
+For example, suppose we have a dataset of frog diets in lakes with and without fish. 
+We suspect that fish presence may reduce consumption of aquatic insects by frogs, because fish can eat aquatic insects before they metamorphose and become available for adult frogs foraging on the shoreline. 
+
+Here's a picture of a cascades frog (*Rana cascadae*): 
+
+![Cascades frog](http://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Rana_cascadae_8626.JPG/640px-Rana_cascadae_8626.JPG)
+
+Our plan is to use generalized linear mixed models to assess how fish presence affects the consumption of aquatic prey by cascades frogs. 
+We collected stomach contents of multiple frogs across multiple lakes, preserved them in ethanol, and later did our best to identify the prey items (typically to order, and at times family) in the lab. 
+Here's some quick analysis, which can also be found in the file called diet_analysis.R.
+
+Start by loading some packages.
+
+```{r, message=FALSE}
+# load packages
+library(lme4)
+library(ggplot2)
+library(effects)
+```
+
+Then load the data and look at the structure of the dataset. 
+
+```{r}
+# load in data
+diet <- read.csv("diet.csv", header=T)
+str(diet)
+```
+
+Now that we know what data we're working with, we can fit a model relating fish presence/absence to the consumption of aquatic prey by frogs. 
+
+```{r}
+model <- glmer(aquatic ~ fish + (1|lake) + (1|frog_id), data=diet, family=binomial)
+model
+```
+
+Finally, we can illustrate the change in the probability of aquatic prey consumption as a function of fish presence/absence. 
+```{r}
+effs <- allEffects(model)
+plot(effs, rescale.axis=F, rug=F,
+     main="Effects of non-native trout", 
+     xlab="Trout absence or presence (0 or 1)", 
+     ylab="Pr(consumed prey is aquatic)", 
+     ylim=c(0, 1))
+```
+
+For more details you can check out the actual paper [here](). 
