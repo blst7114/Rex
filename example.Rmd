@@ -16,10 +16,10 @@ Here's some quick analysis, which can also be found in the file called diet_anal
 Start by loading some packages.
 
 ```{r, message=FALSE}
-# load packages
-library(lme4)
-library(ggplot2)
-library(effects)
+# load packages (assumes they're installed)
+require(lme4)
+require(ggplot2)
+require(effects)
 ```
 
 Then load the data and look at the structure of the dataset. 

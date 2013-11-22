@@ -1,10 +1,10 @@
 # Doing some simple analysis of the cascades frog diet dataset
 # for details see Joseph et al. 2011 Freshwater Biology
 
-# load packages
-library(lme4)
-library(ggplot2)
-library(effects)
+# load packages (install if not already installed)
+require(lme4) || install.packages(lme4)
+require(ggplot2) || install.packages(ggplot2) 
+require(effects) || install.packages(effects) 
 
 # load in data
 diet <- read.csv("diet.csv", header=T)
